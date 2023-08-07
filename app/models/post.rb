@@ -20,7 +20,7 @@ class Post < ApplicationRecord
     ]
 
   def check_if_clickbait
-    if CLICKBAIT_TITLES.none? { |pattern| pattern.match title }
+    if CLICKBAIT_TITLES.none? { |pattern| pattern =~ title }
       errors.add(:title, "must be clickbait")
     end
   end
